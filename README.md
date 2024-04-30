@@ -3,14 +3,17 @@
 ![image](https://github.com/RESMIRNAIR/DECODER2TO4/assets/154305926/e565d523-f8b2-4e01-8888-0eed4d07ec24)
 VERILOG CODE 
 `````````````
-
- module encoder(a,y);
-input [7:0]a;
-output[2:0]y;
-or(y[2],a[6],a[5],a[4],a[3]);
-or(y[1],a[6],a[5],a[2],a[1]);
-or(y[0],a[6],a[4],a[2],a[0]); 
-endmodule
+module decoder1(a,y);
+input [2:0]a;
+output[7:0]y; and(y[0],~a[2],~a[1],~a[0]);
+and(y[1],~a[2],~a[1],a[0]);
+and(y[2],~a[2],a[1],~a[0]);
+and(y[3],~a[2],a[1],a[0]);
+and(y[4],a[2],~a[1],~a[0]);
+and(y[5],a[2],~a[1],a[0]);
+and(y[6],a[2],a[1],~a[0]);
+and(y[7],a[2],a[1],a[0]); 
+endmodule 
 
  `````````````
 OUTPUT 
